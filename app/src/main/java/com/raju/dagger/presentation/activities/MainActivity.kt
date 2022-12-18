@@ -10,6 +10,7 @@ import dagger.android.AndroidInjector
 import dagger.android.DispatchingAndroidInjector
 import dagger.android.HasAndroidInjector
 import javax.inject.Inject
+import javax.inject.Named
 
 class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
@@ -17,7 +18,12 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
+    @Named("data_manager_1")
     lateinit var dataManager: DataManager
+
+    @Inject
+    @Named("data_manager_2")
+    lateinit var dataManager2: DataManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +32,10 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
         dataManager.setIntValue("test", 100)
         val readData = dataManager.getIntValue("test", -1)
-        Log.d("raju", "readData: $readData")
+        Log.d("raju", "readData1: $readData")
+
+        val readData2 = dataManager2.getIntValue("test", -1)
+        Log.d("raju", "readData2: $readData2")
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector
