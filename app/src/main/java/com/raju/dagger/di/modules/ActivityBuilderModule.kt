@@ -10,10 +10,10 @@ import dagger.android.ContributesAndroidInjector
 abstract class ActivityBuilderModule {
 
     @PerActivity
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [FirstActivityModule::class])
     abstract fun bindFirstActivity(): FirstActivity
 
     @PerActivity
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = [SecondActivityModule::class])
     abstract fun bindSecondActivity(): SecondActivity
 }
