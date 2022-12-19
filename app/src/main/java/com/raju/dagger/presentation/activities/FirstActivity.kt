@@ -12,7 +12,7 @@ import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 import javax.inject.Named
 
-class MainActivity : AppCompatActivity(), HasAndroidInjector {
+class FirstActivity : AppCompatActivity(), HasAndroidInjector {
 
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity(), HasAndroidInjector {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_first)
         AndroidInjection.inject(this) // instead of getApplication().getComponent().inject(this)
 
         dataManager.setIntValue("test", 100)
