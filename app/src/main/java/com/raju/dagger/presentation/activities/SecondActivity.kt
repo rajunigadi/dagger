@@ -31,7 +31,7 @@ class SecondActivity : AppCompatActivity(), HasAndroidInjector {
 
         val readData = dataManager.getIntValue("test", -1)
         Log.d("raju", "readData: $readData")
-        binding.textView.text = "Hello, Second Activity, preference data is $readData"
+        binding.textView.text = "Hello, Second Activity, dataManager is $dataManager"
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector

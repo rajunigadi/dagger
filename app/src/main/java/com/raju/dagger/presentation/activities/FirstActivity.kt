@@ -33,7 +33,7 @@ class FirstActivity : AppCompatActivity(), HasAndroidInjector {
         dataManager.setIntValue("test", 100)
         val readData = dataManager.getIntValue("test", -1)
         Log.d("raju", "readData1: $readData")
-        binding.textView.text = "Hello, First Activity, preference data is $readData"
+        binding.textView.text = "Hello, First Activity, dataManager is $dataManager"
 
         binding.textView.setOnClickListener {
             Intent(this@FirstActivity, SecondActivity::class.java).apply {
