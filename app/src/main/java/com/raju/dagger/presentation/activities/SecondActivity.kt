@@ -1,10 +1,9 @@
 package com.raju.dagger.presentation.activities
 
-import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
-import com.raju.dagger.databinding.ActivityFirstBinding
+import com.raju.dagger.databinding.ActivitySecondBinding
 import com.raju.dagger.utils.DataManager
 import dagger.android.AndroidInjection
 import dagger.android.AndroidInjector
@@ -13,33 +12,26 @@ import dagger.android.HasAndroidInjector
 import javax.inject.Inject
 import javax.inject.Named
 
-class FirstActivity : AppCompatActivity(), HasAndroidInjector {
+class SecondActivity : AppCompatActivity(), HasAndroidInjector {
 
-    private lateinit var binding: ActivityFirstBinding
+    private lateinit var binding: ActivitySecondBinding
 
     @Inject
     lateinit var androidInjector: DispatchingAndroidInjector<Any>
 
     @Inject
-    @Named("data_manager_1")
+    @Named("data_manager_2")
     lateinit var dataManager: DataManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityFirstBinding.inflate(layoutInflater)
+        binding = ActivitySecondBinding.inflate(layoutInflater)
         setContentView(binding.root)
         AndroidInjection.inject(this) // instead of getApplication().getComponent().inject(this)
 
-        dataManager.setIntValue("test", 100)
         val readData = dataManager.getIntValue("test", -1)
-        Log.d("raju", "readData1: $readData")
-        binding.textView.text = "Hello, First Activity, preference data is $readData"
-
-        binding.textView.setOnClickListener {
-            Intent(this@FirstActivity, SecondActivity::class.java).apply {
-                startActivity(this)
-            }
-        }
+        Log.d("raju", "readData: $readData")
+        binding.textView.text = "Hello, Second Activity, preference data is $readData"
     }
 
     override fun androidInjector(): AndroidInjector<Any> = androidInjector

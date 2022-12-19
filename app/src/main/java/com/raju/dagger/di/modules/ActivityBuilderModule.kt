@@ -2,6 +2,7 @@ package com.raju.dagger.di.modules
 
 import com.raju.dagger.di.scopes.PerActivity
 import com.raju.dagger.presentation.activities.FirstActivity
+import com.raju.dagger.presentation.activities.SecondActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -10,5 +11,9 @@ abstract class ActivityBuilderModule {
 
     @PerActivity
     @ContributesAndroidInjector
-    abstract fun bindMainActivity(): FirstActivity
+    abstract fun bindFirstActivity(): FirstActivity
+
+    @PerActivity
+    @ContributesAndroidInjector
+    abstract fun bindSecondActivity(): SecondActivity
 }
